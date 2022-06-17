@@ -70,6 +70,9 @@ class RedisOutboundQueue(BaseOutboundTransport):
         metadata: dict = None,
         api_key: str = None,
     ):
+        LOGGER.info(
+            f"handle_message: {profile}, {payload}, {endpoint}"
+        )
         """Prepare and send message to external queue."""
         if not self.redis:
             raise OutboundTransportError("No Redis instance setup")
